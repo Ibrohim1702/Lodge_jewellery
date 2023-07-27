@@ -1,12 +1,14 @@
 from django.shortcuts import render
 
-from sayt.models import Contact, Subscribe
+from sayt.models import Contact, Subscribe, Product
 
 
 # Create your views here.
 
 
 def index(requests):
+    product = Product.objects.all().order_by("-pk")
+
     ctx = {}
     if requests.POST:
         name = requests.POST.get('name')
@@ -17,9 +19,11 @@ def index(requests):
             name=name, message=message, phone=phone, email=email
         )
 
-        ctx = {
-            "contact": contact,
-        }
+
+    ctx = {
+        "contact": contact,
+        "product": product,
+    }
     return render(requests, "index.html", ctx)
 
 
@@ -54,6 +58,8 @@ def about(requests):
 
 
 def jewellery(requests):
+    product = Product.objects.all().order_by("-pk")
+
     ctx = {}
     if requests.POST:
         email = requests.POST.get('email')
@@ -61,6 +67,7 @@ def jewellery(requests):
             email=email
         )
         ctx = {
-            "email": email
+            "email": email,
+            "product": product,
         }
     return render(requests, "jewellery.html", ctx)

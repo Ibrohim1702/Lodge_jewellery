@@ -17,3 +17,12 @@ class Subscribe(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Product(models.Model):
+    name = models.CharField(max_length=128)
+    img = models.ImageField()
+    price = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name

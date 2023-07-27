@@ -135,7 +135,7 @@
                       aptent taciti sociosqu ad litora torquent per conubia nostra
                     </p>
                     <div>
-                      <a href="">Shop Now</a>
+                      <a href="{% url 'contact'%}">Shop Now</a>
                     </div>
                   </div>
                 </div>
@@ -313,63 +313,29 @@
         </h2>
       </div>
       <div class="price_container">
-        <div class="box">
-          <div class="name">
-            <h6>
-              Diamond Ring
-            </h6>
+        {% for i in product %}
+          <div class="box">
+            <div class="name">
+              <h6>
+                {{ i.name }}
+              </h6>
+            </div>
+            <div class="img-box">
+              <img src="{{ i.img.url }}" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+                $<span>{{ i.price }}</span>
+              </h5>
+              <a href="{% url 'contact' %}">
+                Buy Now
+              </a>
+            </div>
           </div>
-          <div class="img-box">
-            <img src="{% static 'images/p-1.png' %}" alt="">
-          </div>
-          <div class="detail-box">
-            <h5>
-              $<span>1000.00</span>
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <div class="name">
-            <h6>
-              Diamond Ring
-            </h6>
-          </div>
-          <div class="img-box">
-            <img src="{% static 'images/i-2.png' %}" alt="">
-          </div>
-          <div class="detail-box">
-            <h5>
-              $<span>1000.00</span>
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
-        <div class="box">
-          <div class="name">
-            <h6>
-              Diamond Ring
-            </h6>
-          </div>
-          <div class="img-box">
-            <img src="{% static 'images/i-3.png' %}" alt="">
-          </div>
-          <div class="detail-box">
-            <h5>
-              $<span>1000.00</span>
-            </h5>
-            <a href="">
-              Buy Now
-            </a>
-          </div>
-        </div>
+        {% endfor %}
       </div>
       <div class="d-flex justify-content-center">
-        <a href="" class="price_btn">
+        <a href="{% url 'jewellery'%}" class="price_btn">
           See More
         </a>
       </div>
