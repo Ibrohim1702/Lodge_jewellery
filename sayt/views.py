@@ -48,7 +48,13 @@ def about(requests):
 
 
 def jewellery(requests):
-    ctx = {
-
-    }
+    ctx = {}
+    if requests.POST:
+        email = requests.POST.get('email')
+        Subscribe.objects.create(
+            email=email
+        )
+        ctx = {
+            "email": email
+        }
     return render(requests, "jewellery.html", ctx)

@@ -273,10 +273,11 @@
               Newsletter
             </h5>
           </div>
-          <form action="">
+          <form action="" method="post">
+            {% csrf_token %}
             <div class="email_box">
               <label for="email2">Enter Your Email</label>
-              <input type="text" id="email2">
+              <input type="text" id="email2" name="email">
             </div>
             <div>
               <button>
